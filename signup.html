@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="styling.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <header>
+        <div class="header-div">
+            <img src="logo4.png" alt="">
+            <label for="EN" class="words-logo"></label>
+            <select class="header-f">
+                <option>EN</option>
+                <option>DE</option>
+                <option>ES</option>
+                <option>IT</option>
+            </select>
+        </div>
+    </header>
+    <hr>
+
+    
+    <div class="container">
+       
+        <div class="firstside">
+            <div class="holder">
+                <img src="new user.png" alt="">
+            </div>
+            <div class="move-div"> 
+            <div class="fo-div"><input class="fud" id= "user" type="text" placeholder="Username"><p id="ben">Required field*</p></div>
+            
+           <div class="fo-div"><input id= "email" type="text" placeholder="Email"><p id="ben">Required field*</p></div> 
+            <div class="fo-div"><input id= "password" type="password" placeholder="Password"><p id="ben">Required field*</p></div>
+            <div class="fo-div"><input id="confirmpass" type="password" placeholder=" Confirm Password"><p id="ben">Required field*</p></div>
+            <div class="checkbox-div"> <input type="checkbox" name="" id="">
+                <p>Stay connected (uncheck this box if connecting from a device that does not belong to you)</p>
+            </div>
+            <div class="fo-div"><p id="message"></p></div>
+           <div class="fo-div"><button id="button-style"onclick="signup()">Sign up</button></div> 
+           <div class="forgotten-div">
+            <p>Forgotten your login details?</p>
+            <p>|</p>
+            <p>Create an account (free)</p>
+        </div>
+        <div class="powered">
+            <p>powered by</p>
+            <img src="logo4.png" alt="" width="40px">
+        </div>
+        </div>
+        </div>
+    
+
+    <div class="second-side">
+        <div class="moved"><div class="h3-div">
+            <h4>The ethical </h3>
+                <h3>collaboration suite</h3>
+        </div>
+        <div class="p-div">
+            <h6>Increase your productivity with a 100% Swiss solution that </h6>
+        </div>
+        <div class="p-divtwo">
+            <h6>bring together all the apps for teamwork.</h6>
+        </div>
+        <div class="button-discover">
+            <button><b>DISCOVER KSUITE</b></button>
+        </div>
+        <div class="radio-div">
+            <input type="radio" name="" id="">
+            <input type="radio" name="" id="">
+            <input type="radio" name="" id="">
+        </div>
+    </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    let realuser=document.getElementById("user")
+    let realemail=document.getElementById("email")
+    let realpass=document.getElementById("password")
+    let confirmpass=document.getElementById("confirmpass")
+    let message=document.getElementById("message")
+    
+    let detailArray=JSON.parse(localStorage.getItem("signUp"))||[]
+    function signup(){
+        let passWord = realpass.value
+        let confirmPassword=confirmpass.value
+        console.log(realuser.value);
+        console.log(realemail.value);
+        console.log(realpass.length);
+        console.log(confirmPassword.length);
+        console.log(confirmpass.value);
+    //    let pass = realpass.value
+       console.log(passWord.length);
+        if (realuser.value==""||realemail.value== ""||realpass.value==""||confirmpass.value=="") {
+            alert("All feilds cannot be empty")
+        }
+        else{
+         if(passWord.length < 8 || confirmPassword.length < 8){
+            message.innerHTML=`<p class='red'>Password must be minimum of 8 characters</p>`
+        }
+        else if(passWord != confirmPassword){
+            message.innerHTML=`<p class="match">Password does not match</p>`
+        }
+        else{
+            alert("Sign up Sucessful")
+            let details={
+                username: realuser.value,
+                email: realemail.value,
+                password: passWord
+                
+            }
+            detailArray.push(details)
+            console.log(detailArray);
+            localStorage.setItem("signUp", JSON.stringify(detailArray))
+            setTimeout(() => {    
+                window.location.href = 'login.html'
+            }, 3000);
+        }
+    }
+            
+    }
+</script>

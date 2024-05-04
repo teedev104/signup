@@ -1,0 +1,194 @@
+*{
+margin: 0px;
+padding:0px;
+}
+
+.firstside{
+    width: 700px;
+    background-color: aliceblue;
+    height: 900px;
+}
+
+.second-side{
+    width:700px;
+    background-image: url(ksuite.jpeg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    color:white;
+    height:900px;
+}
+
+.container{
+    display: flex;
+    
+}
+.fo-div{
+    margin-top: 20px;
+    margin-left: 150px;
+}
+
+#user,#email, #password, #confirmpass{
+    width: 400px;
+    height: 40px;
+    border-radius: 8px;
+    border: solid 1px red;
+}
+#button-style{
+    width: 400px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: rgb(48,151,247);
+    color:white;
+
+}
+.move-div{
+    margin-top: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.header-div {
+    height: 8vh;
+    width:100%;
+    background-color: white;
+    display:flex;
+    gap: 590px;
+    
+}
+
+.header-div img{
+    width: 145px;
+    height:65px;
+    padding-left: 30px;
+    margin-top: -1px;
+}
+
+.header-f{height: 35px;
+    margin-top: 19px;
+    width:53px;
+    background-color: rgb(241,241,241);
+    font-size: 14px;
+    
+    
+}
+.forgotten-div{
+    display:flex;
+    margin-top: 9px;
+    align-items: center;
+    gap:10px;
+    margin-left: 170px;
+    color: blue;
+}
+
+
+.powered{display: flex;
+    gap:10px;
+margin-top: 210px;
+margin-left: 510px;}
+
+.powered p{
+    font-size: 13px;
+    
+}
+
+
+.h3-div h4{
+    position: absolute;
+    top: 210px;
+    font-size: 32px;
+    margin-left: 240px;
+    color:white;
+}
+
+.h3-div h3{
+    position: absolute;
+    margin-right:-30px;
+    top:160px;
+    font-size: 32px;
+    margin-left: 190px;
+    color:white;
+}
+
+.p-div h6{
+    position: absolute;
+    top:410px;
+    color:white;
+    font-size: 15px;
+    margin-left: 120px;
+    margin-top: 15px;
+}
+
+.p-divtwo h6{
+    position: absolute;
+    top:440px;
+    font-size: 15px;
+    margin-left: 90px;
+    color: white;
+    margin-left:120px;
+    
+}
+.button-discover{
+    position: absolute;
+    top: -110px;
+    right:699px;
+    align-items: center;
+    
+   
+}
+.button-discover button{
+    position: absolute;
+    top: 390px;
+    width: 165px;
+    padding-left: 6px;
+    margin-left:170px;
+    height:65px;
+    font-size: 12px;
+    color:rgba(0, 0, 0, 0.662);
+    border-radius:9px;
+    border:none;
+    
+}
+
+.radio-div{
+    position: absolute;
+    top: 360px;
+    right:420px;
+   
+}
+
+.radio-div{
+    margin-left: 231px;
+}
+
+.red{
+    color:red;
+}
+
+.checkbox-div{
+    margin-left:165px;
+    display: flex;
+    margin-top: 40px;
+    /* justify-content: space-between; */
+    gap:10px;
+    font-size: 10px;
+    border:none;
+    
+}
+
+#ben{
+    color:red;
+    margin-left: 3px;
+}
+
+.holder{
+    width:200px;
+    height: 5px;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30%;
+}
+
+.match{
+    background-color: yellow;
+    color:red;
+    width:190px;
+}

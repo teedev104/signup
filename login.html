@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id= "email" type="text" placeholder="Email">
+    <input id= "password" type="password" placeholder="Password">
+    <button onclick="signin()">Sign in</button>
+</body>
+</html>
+
+<script>
+    let signUser=JSON.parse(localStorage.getItem("signUp"))
+    console.log(signUser);
+    let newemail=document.getElementById("email")
+    let newpassword=document.getElementById("password")
+
+    function signin(){
+        console.log(email.value);
+        console.log(password.value);
+        let searchUser=signUser.find(element =>element.email==newemail.value&&element.password==newpassword.value)
+        if (newemail.value==""||newpassword.value=="") {
+            alert("all feilds are mandatory")
+            
+            
+        }
+        else{
+            if (searchUser) {
+                setTimeout(() => {
+                    window.location.href = 'dashboard.html'
+                }, 3000);
+            }
+            else{
+                alert("user not found")
+            }
+        }
+    }
+</script>
