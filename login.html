@@ -29,6 +29,7 @@
         }
         else{
             if (searchUser) {
+                localStorage.setItem("CU", JSON.stringify(searchUser));
                 setTimeout(() => {
                     window.location.href = 'dashboard.html'
                 }, 3000);
