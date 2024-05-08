@@ -47,20 +47,31 @@
 </html>
 
 <script>
+    let picture;
     function doSomethig(ev){
         console.log(ev.target.innerHTML);
         ev.target.innerHTML = "Changed";
         ev.target.style.color = "blue"
     }
     let signedUser = JSON.parse(localStorage.getItem("CU"));
-    let allUser = JSON.parse(localStorage.getItem("signUp"));
     let changeAvatar = document.getElementById("changeAvatar")
+
+    function authenticateUser(){
+        if(signedUser == null){
+            alert("Please log in");
+            window.location.href = "login.html"
+        }else{
+            signedUser.profilePicture ? changeAvatar.src = signedUser.profilePicture : changeAvatar.src = "default.jpeg"
+        }
+    }
+    authenticateUser()
+    let allUser = JSON.parse(localStorage.getItem("signUp"));
     console.log(allUser);
     console.log(signedUser);
 
     console.log(signedUser.profilePicture);
 
-    signedUser.profilePicture ? changeAvatar.src = signedUser.profilePicture : changeAvatar.src = "default.jpeg"
+    
 
     function pickAvatar(dan){
         console.log(dan.target.files);
@@ -69,11 +80,28 @@
 
         reader.addEventListener("load", (e)=>{
             changeAvatar.src = e.target.result;
+            picture = e.target.result;
+            console.log(picture);
         })
 
         if(file){
             reader.readAsDataURL(file)
         }
+    }
+
+    function uploadAvatar(){
+        // console.log(picture);
+        if(picture == undefined){
+            alert("Please select a picture");
+            return;
+        }
+        let singleUser = allUser.find(el=> el.email == signedUser.email);
+        signedUser.profilePicture = picture;
+        console.log(singleUser);
+        singleUser.profilePicture = picture;
+        localStorage.setItem("signUp", JSON.stringify(allUser));
+        localStorage.setItem("CU", JSON.stringify(signedUser));
+
     }
 
 </script>

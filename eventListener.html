@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <main>
+        <button onclick="doSomething()">Click btn</button>
+        <button id="listen">Click button</button>
+
+        <div onmouseleave="mouseLeft()" id="dan"></div>
+    </main>
+</body>
+</html>
+
+<script>
+    let dan = document.getElementById("dan");
+    dan.style.width = "200px"
+    dan.style.height = "200px"
+    dan.style.backgroundColor = "green";
+
+    dan.addEventListener("click", function(){
+        dan.style.backgroundColor = "black";
+        dan.style.borderRadius = "100%"
+    })
+
+    dan.addEventListener("mouseenter", function(){
+        dan.style.backgroundColor = "yellow";
+    })
+
+    function mouseLeft(){
+        dan.style.backgroundColor = "green";
+    }
+
+    function doSomething(){
+        console.log("Daniel");
+    }
+
+    document.getElementById("listen").addEventListener("click", function(){
+        console.log("Event Attached");
+    })
+</script>
