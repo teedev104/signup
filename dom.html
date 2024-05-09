@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        nav{
+            display: flex;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            background-color: #fff;
+            color: black;
+        }
+        li{
+            display: inline-block;
+            font-size: 20px;
+        }
+        .mobile{
+            background-color: black;
+            color: #fff;
+            position: absolute;
+            top: 40px;
+            width: 100%;
+            height: 90vh;
+        }
+        .myStyle{
+            width: 100px;
+            height: 100px;
+            background-color: teal;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div>Logo</div>
+        <ul>
+            <li>Home</li>
+            <li>Home</li>
+            <li>Home</li>
+            <li>Home</li>
+        </ul>
+        <button id="menu">Menu</button>
+    </nav>
+
+    <h1>Hey</h1>
+    <h1>Hi</h1>
+    <h2 id="yy"></h2>
+    <button class="dan">Click me</button>
+    <button name="hey">Get by name</button>
+    <button name="hey">Get by name</button>
+    <button name="hey">Get by name</button>
+    <button name="hey">Get by name</button>
+<hr>
+    <button onclick="numm(1)">Numbers</button>
+    <button onclick="numm(2)">Numbers</button>
+    <button onclick="numm(3)">Numbers</button>
+    <button onclick="numm(4)">Numbers</button>
+    <button onclick="numm(5)">Numbers</button>
+    <button onclick="numm(6)">Numbers</button>
+</body>
+</html>
+
+<script>
+
+    let think = document.createElement("div");
+    think.classList.add("myStyle");
+    document.body.appendChild(think);
+    think.innerHTML = "Hello world"
+    think.addEventListener("click", ()=>{
+        alert()
+    })
+    let inp = document.createElement("input")
+    document.body.appendChild(inp)
+    inp.value = "Hey DOM"
+    // document.body.innerHTML = think
+    let menu = document.getElementById("menu");
+    let ul = document.getElementsByTagName("ul")
+    menu.style.display = "none";
+    
+        console.log(document.body.clientWidth);
+
+        if(document.body.clientWidth <= 1300){
+            document.body.style.backgroundColor = "yellow"
+            menu.style.display = "block"
+            ul[0].style.display = "none";
+        }else{
+            menu.style.display = "none"
+            ul[0].style.display = "block";
+        }
+    menu.addEventListener("click", ()=>{
+        console.log("oiuytrd");
+        console.log(ul);
+        ul[0].style.display == "none"? ul[0].style.display = "block": ul[0].style.display = "none";
+        ul[0].style.display == "block"? ul[0].classList.add("mobile") : ul[0].classList.remove();
+
+        // ul[0].style.display = "block";
+        // ul[0].style.backgroundColor = "black";
+        // ul[0].style.width = "100%";
+        // ul[0].style.height = "90vh";
+        // ul[0].style.top = "40px";
+        // ul[0].style.color = "#fff";
+        // ul[0].style.position = "absolute";
+    })
+    // DOM(Document )
+    let hey = document.getElementsByName("hey");
+    console.log(hey);
+    let ind = 0
+    function numm(nn){
+        hey[ind].style.backgroundColor = "tomato";
+        ind++
+    }
+
+    hey.forEach((el, i)=>{
+        el.addEventListener("mouseenter", ()=>{
+            el.style.backgroundColor = "purple"
+        })
+    })
+    hey.forEach((el, i)=>{
+        el.addEventListener("mouseleave", ()=>{
+            el.style.background = "none"
+        })
+    })
+
+    let dan = document.getElementsByClassName("dan");
+    console.log(dan);
+    dan[0].style.backgroundColor = "blue";
+
+    let yy = document.getElementById("yy")
+    yy.innerHTML = "Something"
+    let element = document.getElementsByTagName("h1");
+    console.log(element);
+    element[1].innerHTML = "Hello"
+
+    let obj = {name: "Daniel", age: 8}
+    console.log(obj.name);
+
+
+</script>
