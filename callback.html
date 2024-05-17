@@ -54,4 +54,15 @@
             `
         })
     })
+    // https://domain.com/path?query="info"
+    fetch("https://yourserver.com/whatever", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({name: "Daniel", email: "daniel@gmail.com"})
+    }).then((res)=> res.json())
+    .then(()=>{
+        console.log("Document Created");
+    })
 </script>

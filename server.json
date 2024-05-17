@@ -1,0 +1,76 @@
+{
+  "users": [
+    {
+      "id": "3dff",
+      "username": "Lets",
+      "email": "test",
+      "password": "this"
+    },
+    {
+      "id": "fc77",
+      "username": "function",
+      "email": "display",
+      "password": "after"
+    },
+    {
+      "id": "3d6a",
+      "username": "Wow",
+      "email": "amazing",
+      "password": "things"
+    },
+    {
+      "id": "f156",
+      "username": "This",
+      "email": "one",
+      "password": "again"
+    },
+    {
+      "id": "85f4",
+      "username": "Teat",
+      "email": "test@gmail.com",
+      "password": "test@gmail.com"
+    },
+    {
+      "id": "064a",
+      "username": "Creatw",
+      "email": "creakjhgf",
+      "password": "iuytred"
+    },
+    {
+      "id": "56c8",
+      "username": "tttttt",
+      "email": "ttttttt",
+      "password": "ttttttt"
+    },
+    {
+      "id": "a48e",
+      "username": "mmmm",
+      "email": "mmmmm",
+      "password": "mmmmmm"
+    },
+    {
+      "id": "b8a6",
+      "username": "aaaaaa",
+      "email": "aaaaaa",
+      "password": "aaaaaa"
+    },
+    {
+      "id": "c97a",
+      "username": "sssss",
+      "email": "ssssss",
+      "password": "sssssss"
+    },
+    {
+      "id": "e58b",
+      "username": "",
+      "email": "",
+      "password": ""
+    },
+    {
+      "id": "681b",
+      "username": "Daniel",
+      "email": "daniel@gmail.com",
+      "password": "iuytr"
+    }
+  ]
+}

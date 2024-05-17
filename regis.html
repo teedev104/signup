@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Document</title>
+    <style>
+        #modal{
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0,0,0,0.5);
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #modal form{
+            background-color: #fff;
+            padding: 10px;
+        }
+        .closeModal{
+            position: absolute;
+            top: 50px;
+            right: 50px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <form action="">
+            <div>
+                <input id="username" type="text">
+            </div>
+            <div>
+                <input id="email" type="text">
+            </div>
+            <div>
+                <input id="password" type="text">
+            </div>
+            <button onclick="reg(event)">Reg</button>
+        </form>
+    </main>
+    <div id="modal">
+        <button onclick="closeModal()" class="btn btn-sm btn-danger closeModal">&times;</button>
+        <form action="">
+            <h1>Edit User</h1>
+            <div>
+                <input id="editUsername" type="text">
+            </div>
+            <div>
+                <input id="editEmail" type="text">
+            </div>
+            <div>
+                <input id="editPassword" type="text">
+            </div>
+            <button onclick="saveChanges(event)">Save Changes</button>
+        </form>
+    </div>
+    <main>
+        <h1>Users</h1>
+        <div id="display_users"></div>
+    </main>
+
+    
+</body>
+</html>
+
+<script>
+    let display_users = document.getElementById("display_users")
+    let modal = document.getElementById("modal");
+    let users;
+    let user_id;
+    modal.style.display = "none"
+    function reg(ev){
+        ev.preventDefault();
+        ev.target.innerHTML = "Loading"
+        setTimeout(()=>{
+        let data = {
+            username: username.value,
+            email: email.value,
+            password: password.value
+        }
+        console.log(data);
+        fetch("http://localhost:2222/users", {
+            method: "POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then((res)=> res.json())
+        .then(()=>{
+            console.log("User Created");
+            ev.target.innerHTML = "Reg"
+            fetchUsers()
+        })
+        }, 3000)
+    }
+
+    function fetchUsers(){
+        display_users.innerHTML = ""
+        fetch("http://localhost:2222/users").then((res)=> res.json()).then((data)=>{
+            console.log(data);
+            users = data;
+            data.forEach((el)=>{
+                display_users.innerHTML += `
+                    <div class="card py-2 my-2 shadow">
+                        <h1>${el.username}</h1>
+                        <h1>${el.email}</h1>
+                        <div>
+                            <button onclick="editUser('${el.id}')" class="btn btn-warning">Edit</button>
+                            <button class="btn btn-info">View User</button>
+                            <button class="btn btn-danger">Del User</button>
+                        </div>
+                    </div>
+                `
+            })
+        })
+    }
+    fetchUsers()
+
+    function editUser(id){
+        console.log(id);
+        user_id = id;
+        modal.style.display = "flex"
+        let one = users.find(el=> el.id == id);
+        console.log(one);
+        editUsername.value = one.username
+        editEmail.value = one.email
+        editPassword.value = one.password
+    }
+
+    function closeModal(){
+        modal.style.display = "none"
+    }
+
+    function saveChanges(ev){
+        ev.preventDefault();
+        let data = {
+            username: editUsername.value,
+            email: editEmail.value,
+            password: editPassword.value
+        }
+        console.log(data);
+        fetch(`http://localhost:2222/users/${user_id}`, {
+            method: "PATCH",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        }).then(res => res.json())
+        .then(()=>{
+            modal.style.display = "none"
+            alert("Changes saved")
+            fetchUsers()
+        })
+    }
+    //
+    let str = "I am a boy"
+
+    let username = "Rwasiu123__";
+    let pattern = /boy/
+
+    // console.log(pattern.test(str));
+    let pattern2 = /^[A-Z]?[a-z]+[0-9]+[@_-]{1}$/
+    console.log(pattern2.test(username));
+
+    let email = "daniel29@gmail.ng"
+
+    let emailPattern = /^[A-Za-z0-9]+[@]{1}[A-Za-z]+[.]{1}[A-Za-z]{2,3}$/
+    console.log(emailPattern.test(email));
+
+    // OOP
+
+    let obj = {};
+    console.log(obj);
+
+    let person = {
+        name: "Daniel",
+        color: "Fair",
+
+        sayHello(){
+            console.log(`${this.name} is saying hello`);
+        }
+    }
+
+    console.log(person.sayHello());
+
+    function House(color, stories){
+        this.color = color;
+        this.stories = stories
+    }
+    House.prototype.building = function(){
+        console.log(`The house is ${this.color} and it is ${this.stories} building`);
+    }
+
+    let house1 = new House("blue", 23)
+    console.log(house1);
+
+    let house2 = new House("white", 50)
+    console.log(house2);
+    
+</script>
